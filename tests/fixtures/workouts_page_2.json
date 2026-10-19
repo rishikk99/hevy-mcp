@@ -1,0 +1,36 @@
+{
+  "workouts": [
+    {
+      "id": "w010",
+      "name": "Push A",
+      "start_time": "2026-08-10T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 10"
+      }
+    },
+    {
+      "id": "w011",
+      "name": "Pull A",
+      "start_time": "2026-08-09T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 11"
+      }
+    },
+    {
+      "id": "w012",
+      "name": "Legs A",
+      "start_time": "2026-08-08T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 12"
+      }
+    },
+    {
+      "id": "w013",
+      "name": "Push B",
+      "start_time": "2026-08-07T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 13"
+      }
+    }
+  ]
+}

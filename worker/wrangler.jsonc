@@ -1,0 +1,38 @@
+{
+  // hevy-mcp as a Cloudflare Worker: the remote MCP connector for claude.ai.
+  // Lines marked YOURS are specific to one deployment; the README's setup guide
+  // shows how to create your own and fill them in.
+  "name": "hevy-mcp",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+
+  // Served only at the custom domain. The workers.dev address stays off so the
+  // connector has exactly one public URL.
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "hevy.rishikk.com", "custom_domain": true }], // YOURS: your subdomain
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "hevy",
+      "database_id": "36808d35-4ceb-4268-ad5e-fa52fe46044e", // YOURS: from `wrangler d1 create hevy`
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // OAuth grants, client registrations, and hashed tokens (see src/auth.ts).
+  // YOURS: id from `wrangler kv namespace create OAUTH_KV`
+  "kv_namespaces": [{ "binding": "OAUTH_KV", "id": "69d00458cc984b96a0e44ebdd4dce21f" }],
+
+  // Lets the OAuth library fetch a client's metadata document (CIMD) without
+  // reaching this account's own zones, which guards against SSRF.
+  "compatibility_flags": ["global_fetch_strictly_public"],
+
+  // Hourly sync, off the top of the hour.
+  "triggers": { "crons": ["7 * * * *"] },
+
+  "vars": { "PUBLIC_HOST": "hevy.rishikk.com" } // YOURS: same subdomain as the route
+  // Secret, never committed: OWNER_PASSWORD_HASH, the sign-in password's
+  // PBKDF2 hash. Set or change it with set-password.ps1.
+}

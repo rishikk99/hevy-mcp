@@ -1,0 +1,84 @@
+{
+  "workouts": [
+    {
+      "id": "w000",
+      "name": "Push A",
+      "start_time": "2026-08-20T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 0"
+      }
+    },
+    {
+      "id": "w001",
+      "name": "Pull A",
+      "start_time": "2026-08-19T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 1"
+      }
+    },
+    {
+      "id": "w002",
+      "name": "Legs A",
+      "start_time": "2026-08-18T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 2"
+      }
+    },
+    {
+      "id": "w003",
+      "name": "Push B",
+      "start_time": "2026-08-17T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 3"
+      }
+    },
+    {
+      "id": "w004",
+      "name": "Pull B",
+      "start_time": "2026-08-16T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 4"
+      }
+    },
+    {
+      "id": "w005",
+      "name": "Legs B",
+      "start_time": "2026-08-15T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 5"
+      }
+    },
+    {
+      "id": "w006",
+      "name": "Upper",
+      "start_time": "2026-08-14T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 6"
+      }
+    },
+    {
+      "id": "w007",
+      "name": "Lower",
+      "start_time": "2026-08-13T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 7"
+      }
+    },
+    {
+      "id": "w008",
+      "name": "Full Body",
+      "start_time": "2026-08-12T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 8"
+      }
+    },
+    {
+      "id": "w009",
+      "name": "Arms",
+      "start_time": "2026-08-11T17:30:00.000Z",
+      "opaque": {
+        "note": "unmodelled payload for workout 9"
+      }
+    }
+  ]
+}

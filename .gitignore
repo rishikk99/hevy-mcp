@@ -1,0 +1,43 @@
+# Local Hevy state: tokens, SQLite cache, persistent browser profile.
+# Never commit anything in here.
+.hevy/
+*.sqlite3
+*.sqlite3-wal
+*.sqlite3-shm
+*.db
+
+# Cloudflare Worker build output and dependencies.
+worker/node_modules/
+worker/.wrangler/
+# Python query output on the real history, for the equivalence test.
+worker/test/.golden.json
+
+# Raw personal capture from scripts/capture_fixture.py.
+# The sanitized tests/fixtures/workout_shape.json is committed instead.
+tests/fixtures/workout_sample.json
+tests/fixtures/workouts_page_sample.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Env and secrets
+.env
+.env.*
+worker/.dev.vars
+
+# Exports that hold personal data (export_to_d1.py, update_exercise_library.py).
+*.sql
+!worker/migrations/*.sql
+
+# Editor and assistant state
+.claude/
+.vscode/
