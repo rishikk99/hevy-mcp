@@ -151,7 +151,7 @@ flowchart LR
 - **Free-tier engineering.** The free Workers plan allows 50 outbound requests per run, so sync
   checkpoints and resumes, and the history was seeded from the local cache rather than
   re-downloaded. Hosting costs $0.
-- **345 tests** across Python (pytest) and TypeScript (Vitest). They run offline against a
+- **351 tests** across Python (pytest) and TypeScript (Vitest). They run offline against a
   stateful fake of Hevy built from recorded requests, plus an in-memory D1 and KV.
 
 ---
@@ -240,7 +240,7 @@ the Worker, use the hosted connector everywhere.
 
 ```powershell
 uv run pytest                    # Python: 173 tests
-cd worker; npm test              # TypeScript: 172 tests
+cd worker; npm test              # TypeScript: 178 tests
 npx tsc --noEmit                 # type check
 ```
 
@@ -276,6 +276,10 @@ How it works in depth (sync, schema, volume rules, authentication, every tool):
   - the password is stored only as a PBKDF2 hash.
 - **Every change to your Hevy account is previewed and confirmed.** The Claude apps can also
   be set to ask permission before any tool that changes something runs.
+- **One optional public endpoint, off by default.** Setting `PUBLIC_LAST_WORKOUT` to `"true"`
+  publishes `/public/last-workout` for a personal website: a generic label (a split name like
+  "Push", or the muscle groups worked), days ago, sets and minutes. Never the workout's own name,
+  its time, exercises or weights.
 
 ## Credits
 

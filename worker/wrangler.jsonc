@@ -32,7 +32,12 @@
   // Hourly sync, off the top of the hour.
   "triggers": { "crons": ["7 * * * *"] },
 
-  "vars": { "PUBLIC_HOST": "hevy.rishikk.com" } // YOURS: same subdomain as the route
+  "vars": {
+    "PUBLIC_HOST": "hevy.rishikk.com", // YOURS: same subdomain as the route
+    // YOURS: "true" publishes a last-workout summary at /public/last-workout
+    // (a generic label, days ago, sets, minutes) for a personal website. Off unless set.
+    "PUBLIC_LAST_WORKOUT": "true"
+  }
   // Secret, never committed: OWNER_PASSWORD_HASH, the sign-in password's
   // PBKDF2 hash. Set or change it with set-password.ps1.
 }

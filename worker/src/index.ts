@@ -3,12 +3,15 @@
 // The MCP endpoint is https://<host>/mcp, behind OAuth (see auth.ts): clients
 // discover the authorization server from the 401, register themselves, send
 // the owner to /authorize once, and refresh their own tokens afterwards.
+// The only other data route is /public/last-workout (see public.ts), off unless
+// PUBLIC_LAST_WORKOUT is "true".
 // Observability logging is off: it would record request URLs and headers.
 
 import { OAuthProvider, type OAuthHelpers } from "@cloudflare/workers-oauth-provider";
 
 import { handleAuthorize, OWNER_ID, page, SCOPE } from "./auth";
 import { handleMcp } from "./mcp";
+import { LAST_WORKOUT_PATH, lastWorkout } from "./public";
 import { runSync } from "./sync";
 
 export interface Env {
@@ -16,6 +19,8 @@ export interface Env {
   OAUTH_KV: KVNamespace;
   OAUTH_PROVIDER: OAuthHelpers;
   PUBLIC_HOST: string;
+  /** "true" turns on /public/last-workout (see public.ts). */
+  PUBLIC_LAST_WORKOUT?: string;
   OWNER_PASSWORD_HASH?: string;
 }
 
@@ -46,6 +51,13 @@ const site: ExportedHandler<Env> = {
           "<p>This is a private connector that lets Claude read Hevy workout history and build routines.</p>" +
           "<p>There's nothing to browse here. Claude connects to it directly, after its owner signs in.</p>",
       );
+    }
+    if (
+      url.pathname === LAST_WORKOUT_PATH &&
+      env.PUBLIC_LAST_WORKOUT === "true" &&
+      (request.method === "GET" || request.method === "HEAD")
+    ) {
+      return lastWorkout(env.DB);
     }
     if (url.pathname === "/robots.txt") {
       return new Response("User-agent: *\nDisallow: /\n", { headers: { "Content-Type": "text/plain" } });

@@ -98,6 +98,10 @@ Rules on top of the library's checks:
   signing in.
 - **Rate limit:** ten wrong passwords pause sign-in for an hour.
 - **No search indexing:** `/robots.txt` disallows everything, and pages carry `noindex`.
+- **One public route, opt-in:** with `PUBLIC_LAST_WORKOUT` set to `"true"`,
+  `/public/last-workout` (`public.ts`) returns the newest workout as a label, days ago, sets and
+  minutes, with CORS open and a 5-minute cache. The label is a fixed split word found in the
+  title, else the top two muscle groups, so free text typed into Hevy is never published.
 - **Browsers:** a browser that opens `/mcp` gets a readable "sign in through Claude" page
   rather than a bare 401, with the same `WWW-Authenticate` header for MCP clients.
 
@@ -293,7 +297,7 @@ waiting on the network doesn't count).
 
 ```powershell
 uv run pytest            # Python: 173 tests
-cd worker; npm test      # TypeScript: 172 tests
+cd worker; npm test      # TypeScript: 178 tests
 ```
 
 - **Offline by construction.** Python exercises the HTTP layer through `httpx.MockTransport`.
